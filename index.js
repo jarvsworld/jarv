@@ -19,25 +19,25 @@ const VERIFY_TOKEN = process.env.VERIFY_TOKEN || 'jarv_verify_2024';
 // ── BASE DE CURSOS (editable desde el panel) ──────
 let cursos = {
   'CURSO-A': {
-    nombre: 'La Logística Internacional y Operatividad Aduanera',
-    precio: '$6,948.40 MXN',  
-    duracion: '2 días',
-    descripcion: 'ESTE SEMINARIO ES PARA TI SI ERES: Un profesional involucrado en cadenas de suministro globales como: Gerente de Logística, Importador, Exportador, Agente Aduanal, Comprador Internacional, Dueño de Negocios con operaciones de comercio exterior y personal de áreas de comercio exterior, compras o supply chain.',
-    link: ' '
+    nombre: 'Marketing Digital Avanzado',
+    precio: '$1,500 MXN',
+    duracion: '8 semanas',
+    descripcion: 'Domina las redes sociales, publicidad pagada y estrategias de contenido para hacer crecer tu negocio.',
+    link: 'https://tulink.com/marketing-digital'
   },
   'CURSO-B': {
-    nombre: 'Revoluciona la Capacitación con Inteligencia Artificial',
-    precio: '$5,788.40 MXN',
-    duracion: '6 horas',
-    descripcion: 'Este seminario es para ti si eres: Profesional de la Capacitación, Educación y Formación o Diseñador Instruccional interesado en integrar nueva tecnología basada en Inteligencia Artificial, en programas de formación y capacitación.',
-    link: ' '
+    nombre: 'Excel para Negocios',
+    precio: '$800 MXN',
+    duracion: '4 semanas',
+    descripcion: 'Aprende a usar Excel para análisis de datos, reportes y automatización de tareas.',
+    link: 'https://tulink.com/excel-negocios'
   },
   'CURSO-C': {
-    nombre: 'Nomenclatura y Clasificación Arancelaria de las Mercancías de Comercio Exterior',
-    precio: '$6,948.40 MXN',
-    duracion: '2 días',
+    nombre: 'Community Manager Pro',
+    precio: '$1,200 MXN',
+    duracion: '6 semanas',
     descripcion: 'Gestiona redes sociales profesionalmente y construye comunidades que venden.',
-    link: ' '
+    link: 'https://tulink.com/community-manager'
   }
 };
 
@@ -186,11 +186,6 @@ app.post('/api/enviar', async (req, res) => {
 
 // Health check
 app.get('/', (req, res) => res.json({ status: 'JARV corriendo ✓', cursos: Object.keys(cursos).length }));
-
-// ── INICIAR ───────────────────────────────────────
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🤖 JARV corriendo en puerto ${PORT}`));
-
 
 // ── INICIAR ───────────────────────────────────────
 const PORT = process.env.PORT || 3000;
