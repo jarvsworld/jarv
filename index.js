@@ -182,6 +182,4 @@ app.get('/', (req, res) => res.json({ status: 'JARV corriendo ✓', cursos: Obje
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🤖 JARV corriendo en puerto ${PORT}`));
-// ── INICIAR ───────────────────────────────────────
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🤖 JARV corriendo en puerto ${PORT}`));
+
