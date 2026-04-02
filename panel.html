@@ -23,27 +23,23 @@
   .nav-tab.active{background:var(--accent);color:#fff}
   .server-url{font-size:.78rem;color:var(--muted);background:var(--surface2);padding:5px 12px;border-radius:8px;border:1px solid var(--border)}
   .server-url span{color:var(--accent3)}
+
   .page{display:none;padding:28px}.page.active{display:block}
   .page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
   .page-header h2{font-family:var(--font-head);font-size:1.5rem;font-weight:800}
- 
-  /* CURSOS GRID */
-  .cursos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-  .curso-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px}
+
+  /* CURSOS */
+  .cursos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:24px}
+  .curso-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative}
   .curso-clave{font-family:var(--font-head);font-size:.8rem;font-weight:700;color:var(--wa);background:#1b3a2a;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
   .curso-nombre{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:6px}
   .curso-desc{font-size:.8rem;color:var(--muted);line-height:1.5;margin-bottom:12px}
-  .curso-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-  .tag{font-size:.72rem;padding:3px 10px;border-radius:20px;background:var(--surface2);color:var(--muted)}
-  .tag.fecha{color:var(--accent4);background:#2a2410}
-  .tag.precio{color:var(--accent3);background:#1b2e1b}
-  .tag.lugares{color:var(--accent2);background:#2e1b1b}
-  .tag.lugares.ok{color:var(--accent3);background:#1b2e1b}
+  .curso-meta{display:flex;gap:10px;font-size:.78rem;color:var(--muted);margin-bottom:12px}
   .curso-actions{display:flex;gap:8px}
   .btn-edit{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:6px 14px;border-radius:7px;cursor:pointer;font-size:.78rem}
   .btn-del{background:#2e1f1f;border:1px solid #3d2020;color:var(--accent2);padding:6px 14px;border-radius:7px;cursor:pointer;font-size:.78rem}
   .btn-add{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-family:var(--font-body);font-weight:500;font-size:.85rem;cursor:pointer}
- 
+
   /* KEYWORDS */
   .kw-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:20px}
   .kw-box h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:14px}
@@ -51,9 +47,9 @@
   .kw-item{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;display:flex;align-items:center;gap:10px;font-size:.85rem}
   .kw-trigger{color:var(--wa);font-weight:600}
   .kw-arrow{color:var(--muted)}
- 
+
   /* CONVERSACIONES */
-  .conv-layout{display:grid;grid-template-columns:280px 1fr;gap:0;height:calc(100vh - 160px);min-height:500px;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+  .conv-layout{display:grid;grid-template-columns:280px 1fr;gap:0;height:calc(100vh-160px);min-height:500px;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
   .conv-sidebar{border-right:1px solid var(--border);overflow-y:auto}
   .conv-sidebar-hdr{padding:14px 16px;border-bottom:1px solid var(--border);font-family:var(--font-head);font-weight:700;font-size:.95rem}
   .conv-item{padding:13px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
@@ -64,7 +60,7 @@
   .conv-chat{display:flex;flex-direction:column;height:100%}
   .conv-chat-hdr{padding:14px 20px;border-bottom:1px solid var(--border);font-weight:600}
   .conv-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
-  .conv-msg{max-width:70%;padding:10px 14px;border-radius:12px;font-size:.87rem;line-height:1.5;white-space:pre-wrap}
+  .conv-msg{max-width:70%;padding:10px 14px;border-radius:12px;font-size:.87rem;line-height:1.5}
   .conv-msg.sent{background:var(--wa-dark);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
   .conv-msg.received{background:var(--surface);align-self:flex-start;border-bottom-left-radius:3px}
   .conv-msg-time{font-size:.68rem;opacity:.6;margin-top:4px;text-align:right}
@@ -73,42 +69,48 @@
   .conv-input:focus{border-color:var(--wa)}
   .conv-send{background:var(--wa);color:#fff;border:none;padding:9px 18px;border-radius:9px;cursor:pointer;font-weight:600;font-size:.85rem}
   .conv-empty{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);flex-direction:column;gap:10px}
- 
+
   /* MODAL */
   .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center}
   .modal-overlay.open{display:flex}
-  .modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;width:540px;max-width:95vw;max-height:90vh;overflow-y:auto}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;width:480px;max-width:95vw;max-height:90vh;overflow-y:auto}
   .modal h3{font-family:var(--font-head);font-size:1.2rem;font-weight:800;margin-bottom:20px}
   .form-group{margin-bottom:14px}
   .form-group label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:5px;font-weight:500}
-  .form-group input,.form-group select,.form-group textarea{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 13px;border-radius:9px;font-family:var(--font-body);font-size:.88rem;outline:none;transition:border-color .2s}
-  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
-  .form-group textarea{resize:vertical;min-height:70px}
+  .form-group input,.form-group textarea{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 13px;border-radius:9px;font-family:var(--font-body);font-size:.88rem;outline:none;transition:border-color .2s}
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--accent)}
+  .form-group textarea{resize:vertical;min-height:80px}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
   .modal-actions{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
   .btn-cancel{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 20px;border-radius:8px;cursor:pointer;font-family:var(--font-body);font-size:.85rem}
   .btn-save{background:var(--accent);color:#fff;border:none;padding:9px 20px;border-radius:8px;cursor:pointer;font-family:var(--font-body);font-size:.85rem;font-weight:600}
-  .modalidad-info{font-size:.78rem;color:var(--muted);background:var(--surface2);padding:8px 12px;border-radius:8px;margin-top:6px}
-  #fecha2-group{display:none}
- 
+
+  .toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:12px 20px;border-radius:10px;font-size:.85rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.success{border-color:var(--accent3)}.toast.error{border-color:var(--accent2)}
+
+  .empty-state{text-align:center;padding:40px 20px;color:var(--muted)}
+  .empty-icon{font-size:2.5rem;margin-bottom:12px}
+
   /* CONFIG */
   .config-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
-  .config-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:14px}
+  .config-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
   .config-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:.87rem}
   .config-item:last-child{border-bottom:none}
   .config-label{color:var(--muted);font-size:.82rem}
   .config-value{font-weight:500;font-size:.85rem;font-family:monospace;color:var(--accent3)}
   .copy-btn{background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:.75rem}
- 
-  .toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:12px 20px;border-radius:10px;font-size:.85rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none}
-  .toast.show{opacity:1;transform:translateY(0)}
-  .toast.success{border-color:var(--accent3)}.toast.error{border-color:var(--accent2)}
-  .empty-state{text-align:center;padding:40px 20px;color:var(--muted)}
+  .copy-btn:hover{color:var(--text)}
+  .step-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+  .step-num{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+  .step-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+  .step-content h4{font-weight:600;font-size:.9rem;margin-bottom:4px}
+  .step-content p{font-size:.82rem;color:var(--muted);line-height:1.5}
+  .code-block{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:monospace;font-size:.82rem;color:var(--accent3);margin-top:8px;word-break:break-all}
 </style>
 </head>
 <body>
- 
+
 <nav>
   <div class="nav-logo">JARV<span>●</span></div>
   <div class="nav-tabs">
@@ -119,7 +121,7 @@
   </div>
   <div class="server-url">Servidor: <span id="server-display">no configurado</span></div>
 </nav>
- 
+
 <!-- CURSOS -->
 <div id="page-cursos" class="page active">
   <div class="page-header">
@@ -128,12 +130,12 @@
   </div>
   <div class="cursos-grid" id="cursos-grid"></div>
 </div>
- 
+
 <!-- KEYWORDS -->
 <div id="page-keywords" class="page">
   <div class="page-header"><h2>🔤 Palabras Clave</h2></div>
   <div class="kw-box">
-    <h3>Respuestas automáticas por curso</h3>
+    <h3>Respuestas automáticas activas</h3>
     <div class="kw-list" id="kw-list"></div>
   </div>
   <div class="kw-box">
@@ -142,14 +144,14 @@
       <div class="kw-item"><span class="kw-trigger">HOLA / BUENAS</span><span class="kw-arrow">→</span><span>Mensaje de bienvenida</span></div>
       <div class="kw-item"><span class="kw-trigger">CURSOS / CATÁLOGO</span><span class="kw-arrow">→</span><span>Lista completa de cursos</span></div>
       <div class="kw-item"><span class="kw-trigger">SÍ / QUIERO</span><span class="kw-arrow">→</span><span>Confirmación de interés</span></div>
+      <div class="kw-item"><span class="kw-trigger">Cualquier otro</span><span class="kw-arrow">→</span><span>Mensaje de ayuda</span></div>
     </div>
   </div>
 </div>
- 
+
 <!-- CONVERSACIONES -->
 <div id="page-conversaciones" class="page">
-  <div class="page-header">
-    <h2>💬 Conversaciones</h2>
+  <div class="page-header"><h2>💬 Conversaciones</h2>
     <button class="btn-add" onclick="loadConversaciones()" style="background:var(--surface2);border:1px solid var(--border);color:var(--text)">⟳ Actualizar</button>
   </div>
   <div class="conv-layout">
@@ -162,33 +164,76 @@
     </div>
   </div>
 </div>
- 
+
 <!-- CONFIG -->
 <div id="page-config" class="page">
   <div class="page-header"><h2>⚙️ Configuración</h2></div>
+
   <div class="config-card">
     <h3>🔗 URL del servidor</h3>
+    <div class="config-item">
+      <span class="config-label">Pega aquí la URL de Railway después de desplegar:</span>
+    </div>
     <div style="display:flex;gap:10px;margin-top:10px">
-      <input type="text" id="server-url-input" placeholder="https://jarv-xxxx.up.railway.app"
+      <input type="text" id="server-url-input" placeholder="https://jarv-xxxx.railway.app"
         style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 13px;border-radius:9px;font-family:monospace;font-size:.85rem;outline:none"
         oninput="updateServerUrl(this.value)">
       <button class="btn-save" onclick="saveServerUrl()">Guardar</button>
     </div>
   </div>
+
   <div class="config-card">
-    <h3>📋 Datos para el Webhook en Meta</h3>
+    <h3>📋 Datos para configurar el Webhook en Meta</h3>
     <div class="config-item">
-      <div><div class="config-label">URL del Webhook</div><div class="config-value" id="webhook-url-display">Configura la URL primero</div></div>
-      <button class="copy-btn" onclick="copyEl('webhook-url-display')">Copiar</button>
+      <div>
+        <div class="config-label">URL del Webhook</div>
+        <div class="config-value" id="webhook-url-display">Configura la URL del servidor primero</div>
+      </div>
+      <button class="copy-btn" onclick="copyText('webhook-url-display')">Copiar</button>
     </div>
     <div class="config-item">
-      <div><div class="config-label">Token de verificación</div><div class="config-value">jarv_verify_2024</div></div>
-      <button class="copy-btn" onclick="copyText('jarv_verify_2024')">Copiar</button>
+      <div>
+        <div class="config-label">Token de verificación</div>
+        <div class="config-value">jarv_verify_2024</div>
+      </div>
+      <button class="copy-btn" onclick="copyText2('jarv_verify_2024')">Copiar</button>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <h3 style="font-family:var(--font-head);font-weight:700;margin-bottom:16px">📖 Pasos para activar el Webhook</h3>
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Despliega en Railway</h4>
+        <p>Sube los archivos a Railway y obtén la URL pública del servidor.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Configura la URL aquí arriba</h4>
+        <p>Pega la URL de Railway en el campo de arriba y guarda.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Configura el Webhook en Meta</h4>
+        <p>Ve a Meta Developers → tu app → WhatsApp → Configuración de la API → Webhook. Pega la URL y el token de verificación.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Activa el campo "messages"</h4>
+        <p>En la configuración del webhook, suscríbete al campo <strong>messages</strong>.</p>
+      </div>
     </div>
   </div>
 </div>
- 
-<!-- MODAL CURSO -->
+
+<!-- MODAL Curso -->
 <div class="modal-overlay" id="curso-modal">
   <div class="modal">
     <h3 id="curso-modal-title">Nuevo Curso</h3>
@@ -202,152 +247,106 @@
         <input type="text" id="c-precio" placeholder="$1,500 MXN">
       </div>
     </div>
-    <div class="form-group"><label>Nombre del curso *</label><input type="text" id="c-nombre" placeholder="Logística Internacional"></div>
+    <div class="form-group"><label>Nombre del curso *</label><input type="text" id="c-nombre" placeholder="Marketing Digital Avanzado"></div>
     <div class="form-group"><label>Descripción</label><textarea id="c-desc" placeholder="Describe el curso..."></textarea></div>
- 
-    <div class="form-group">
-      <label>Modalidad / Duración *</label>
-      <select id="c-modalidad" onchange="onModalidadChange()">
-        <option value="1dia_6h">1 día — 9am a 3pm (6 horas)</option>
-        <option value="2dias_4h">2 días — 9am a 1pm cada día (4h/día)</option>
-        <option value="2dias_6h">2 días — 9am a 3pm cada día (6h/día)</option>
-      </select>
-      <div class="modalidad-info" id="modalidad-info">📅 Requiere 1 fecha · 🕘 9:00am – 3:00pm</div>
-    </div>
- 
     <div class="form-row">
-      <div class="form-group">
-        <label id="fecha1-label">Fecha del curso *</label>
-        <input type="date" id="c-fecha1">
-      </div>
-      <div class="form-group" id="fecha2-group">
-        <label>Fecha Día 2 *</label>
-        <input type="date" id="c-fecha2">
-      </div>
+      <div class="form-group"><label>Duración</label><input type="text" id="c-duracion" placeholder="8 semanas"></div>
+      <div class="form-group"><label>Link de inscripción</label><input type="text" id="c-link" placeholder="https://..."></div>
     </div>
- 
-    <div class="form-row">
-      <div class="form-group">
-        <label>Lugares disponibles</label>
-        <input type="number" id="c-lugares" placeholder="20" min="0">
-      </div>
-      <div class="form-group">
-        <label>Link de inscripción</label>
-        <input type="text" id="c-link" placeholder="https://...">
-      </div>
-    </div>
- 
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
       <button class="btn-save" onclick="saveCurso()">Guardar</button>
     </div>
   </div>
 </div>
- 
+
 <div class="toast" id="toast"></div>
- 
+
 <script>
 let SERVER_URL = localStorage.getItem('jarv_server') || '';
 let cursos = {};
 let conversaciones = {};
 let activeConv = null;
 let editingClave = null;
- 
-const MODALIDAD_INFO = {
-  '1dia_6h':  '📅 Requiere 1 fecha · 🕘 9:00am – 3:00pm (6 horas)',
-  '2dias_4h': '📅 Requiere 2 fechas · 🕘 9:00am – 1:00pm cada día (4h/día)',
-  '2dias_6h': '📅 Requiere 2 fechas · 🕘 9:00am – 3:00pm cada día (6h/día)'
-};
- 
+
+// ── INIT ─────────────────────────────────────────
 window.onload = () => {
   const saved = localStorage.getItem('jarv_server');
-  if(saved){ SERVER_URL=saved; document.getElementById('server-url-input').value=saved; updateServerUrl(saved); loadCursos(); }
+  if(saved){ SERVER_URL=saved; document.getElementById('server-url-input').value=saved; updateServerUrl(saved); }
+  if(SERVER_URL) loadCursos();
 };
- 
-function onModalidadChange() {
-  const val = document.getElementById('c-modalidad').value;
-  document.getElementById('modalidad-info').textContent = MODALIDAD_INFO[val];
-  const need2 = val === '2dias_4h' || val === '2dias_6h';
-  document.getElementById('fecha2-group').style.display = need2 ? 'block' : 'none';
-  document.getElementById('fecha1-label').textContent = need2 ? 'Fecha Día 1 *' : 'Fecha del curso *';
-}
- 
-function updateServerUrl(url) {
+
+// ── SERVER URL ────────────────────────────────────
+function updateServerUrl(url){
   SERVER_URL = url.replace(/\/$/,'');
-  try {
-    const h = SERVER_URL ? new URL(SERVER_URL.startsWith('http')?SERVER_URL:'https://'+SERVER_URL).hostname : 'no configurado';
-    document.getElementById('server-display').textContent = h;
-  } catch(e) { document.getElementById('server-display').textContent = 'no configurado'; }
-  const el = document.getElementById('webhook-url-display');
-  if(el) el.textContent = SERVER_URL ? SERVER_URL+'/webhook' : 'Configura la URL primero';
+  document.getElementById('server-display').textContent = SERVER_URL ? new URL(SERVER_URL.startsWith('http')?SERVER_URL:'https://'+SERVER_URL).hostname : 'no configurado';
+  const webhookEl = document.getElementById('webhook-url-display');
+  if(webhookEl) webhookEl.textContent = SERVER_URL ? SERVER_URL+'/webhook' : 'Configura la URL del servidor primero';
 }
-function saveServerUrl() { localStorage.setItem('jarv_server', SERVER_URL); loadCursos(); toast('URL guardada ✓','success'); }
- 
-async function api(path, method='GET', body=null) {
-  if(!SERVER_URL){ toast('Configura la URL del servidor','error'); throw new Error('No server'); }
+function saveServerUrl(){
+  localStorage.setItem('jarv_server', SERVER_URL);
+  loadCursos();
+  toast('URL guardada ✓','success');
+}
+
+// ── API CALLS ─────────────────────────────────────
+async function api(path, method='GET', body=null){
+  if(!SERVER_URL){ toast('Configura la URL del servidor primero','error'); throw new Error('No server URL'); }
   const opts = { method, headers:{'Content-Type':'application/json'} };
   if(body) opts.body = JSON.stringify(body);
   const res = await fetch(SERVER_URL+path, opts);
   return res.json();
 }
- 
-async function loadCursos() {
-  try { cursos = await api('/api/cursos'); renderCursos(); renderKeywords(); }
-  catch(e) { console.error(e); }
+
+async function loadCursos(){
+  try{
+    cursos = await api('/api/cursos');
+    renderCursos();
+    renderKeywords();
+  }catch(e){ console.error(e); }
 }
- 
-async function loadConversaciones() {
-  try { conversaciones = await api('/api/conversaciones'); renderConvList(); }
-  catch(e) { toast('Error cargando conversaciones','error'); }
+
+async function loadConversaciones(){
+  try{
+    conversaciones = await api('/api/conversaciones');
+    renderConvList();
+  }catch(e){ toast('Error cargando conversaciones','error'); }
 }
- 
-function showPage(p, el) {
+
+// ── NAVIGATION ────────────────────────────────────
+function showPage(p,el){
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));
   document.getElementById('page-'+p).classList.add('active');
   if(el) el.classList.add('active');
   if(p==='conversaciones') loadConversaciones();
 }
- 
-function formatFecha(f) {
-  if(!f) return null;
-  const d = new Date(f+'T12:00:00');
-  return d.toLocaleDateString('es-MX',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
-}
- 
-function renderCursos() {
+
+// ── CURSOS ────────────────────────────────────────
+function renderCursos(){
   const grid = document.getElementById('cursos-grid');
   const entries = Object.entries(cursos);
-  if(!entries.length){ grid.innerHTML=`<div class="empty-state"><p>Sin cursos. Agrega el primero.</p></div>`; return; }
- 
-  grid.innerHTML = entries.map(([clave,c])=>{
-    const f1 = formatFecha(c.fecha1), f2 = formatFecha(c.fecha2);
-    const lugares = Number(c.lugares)||0;
-    const mod = c.modalidad||'1dia_6h';
-    const horario = mod==='1dia_6h'?'9am–3pm':mod==='2dias_4h'?'9am–1pm c/día':'9am–3pm c/día';
-    const dias = mod==='1dia_6h'?'1 día':'2 días';
- 
-    return `
+  if(!entries.length){
+    grid.innerHTML=`<div class="empty-state"><div class="empty-icon">📚</div><p>Sin cursos. Agrega el primero.</p></div>`;
+    return;
+  }
+  grid.innerHTML = entries.map(([clave,c])=>`
     <div class="curso-card">
       <div class="curso-clave">${clave}</div>
       <div class="curso-nombre">${c.nombre}</div>
       <div class="curso-desc">${c.descripcion||'Sin descripción'}</div>
-      <div class="curso-tags">
-        ${c.precio?`<span class="tag precio">💰 ${c.precio}</span>`:''}
-        <span class="tag">${dias} · ${horario}</span>
-        ${f1?`<span class="tag fecha">📅 ${f1}</span>`:''}
-        ${f2?`<span class="tag fecha">📅 ${f2}</span>`:''}
-        <span class="tag lugares ${lugares>5?'ok':''}">${lugares<=5?'⚠️':'✅'} ${lugares} lugares</span>
+      <div class="curso-meta">
+        <span>💰 ${c.precio||'—'}</span>
+        <span>⏱ ${c.duracion||'—'}</span>
       </div>
       <div class="curso-actions">
         <button class="btn-edit" onclick="openCursoModal('${clave}')">✏️ Editar</button>
         <button class="btn-del" onclick="deleteCurso('${clave}')">🗑 Eliminar</button>
       </div>
-    </div>`;
-  }).join('');
+    </div>`).join('');
 }
- 
-function renderKeywords() {
+
+function renderKeywords(){
   const list = document.getElementById('kw-list');
   if(!list) return;
   list.innerHTML = Object.entries(cursos).map(([clave,c])=>`
@@ -357,40 +356,31 @@ function renderKeywords() {
       <span>Info de "${c.nombre}"</span>
     </div>`).join('');
 }
- 
-function openCursoModal(clave=null) {
+
+function openCursoModal(clave=null){
   editingClave = clave;
-  const c = clave ? cursos[clave] : null;
-  document.getElementById('curso-modal-title').textContent = c ? 'Editar Curso' : 'Nuevo Curso';
+  const c = clave?cursos[clave]:null;
+  document.getElementById('curso-modal-title').textContent = c?'Editar Curso':'Nuevo Curso';
   document.getElementById('c-clave').value    = clave||'';
   document.getElementById('c-nombre').value   = c?.nombre||'';
   document.getElementById('c-precio').value   = c?.precio||'';
   document.getElementById('c-desc').value     = c?.descripcion||'';
-  document.getElementById('c-modalidad').value= c?.modalidad||'1dia_6h';
-  document.getElementById('c-fecha1').value   = c?.fecha1||'';
-  document.getElementById('c-fecha2').value   = c?.fecha2||'';
-  document.getElementById('c-lugares').value  = c?.lugares||'';
+  document.getElementById('c-duracion').value = c?.duracion||'';
   document.getElementById('c-link').value     = c?.link||'';
   document.getElementById('c-clave').disabled = !!clave;
-  onModalidadChange();
   document.getElementById('curso-modal').classList.add('open');
 }
- 
-async function saveCurso() {
+
+async function saveCurso(){
   const clave  = document.getElementById('c-clave').value.trim().toUpperCase();
   const nombre = document.getElementById('c-nombre').value.trim();
-  if(!clave||!nombre){ alert('Clave y nombre son obligatorios'); return; }
-  const modalidad = document.getElementById('c-modalidad').value;
-  const need2 = modalidad === '2dias_4h' || modalidad === '2dias_6h';
-  try {
+  if(!clave||!nombre){alert('Clave y nombre son obligatorios');return;}
+  try{
     await api('/api/cursos','POST',{
       clave, nombre,
       precio:      document.getElementById('c-precio').value.trim(),
       descripcion: document.getElementById('c-desc').value.trim(),
-      modalidad,
-      fecha1:      document.getElementById('c-fecha1').value,
-      fecha2:      need2 ? document.getElementById('c-fecha2').value : '',
-      lugares:     document.getElementById('c-lugares').value,
+      duracion:    document.getElementById('c-duracion').value.trim(),
       link:        document.getElementById('c-link').value.trim()
     });
     cursos = await api('/api/cursos');
@@ -398,33 +388,39 @@ async function saveCurso() {
     renderCursos();
     renderKeywords();
     toast('Curso guardado ✓','success');
-  } catch(e) { toast('Error: '+e.message,'error'); }
+  }catch(e){ toast('Error: '+e.message,'error'); }
 }
- 
-async function deleteCurso(clave) {
+
+async function deleteCurso(clave){
   if(!confirm(`¿Eliminar ${clave}?`)) return;
-  try {
+  try{
     await api('/api/cursos/'+clave,'DELETE');
     cursos = await api('/api/cursos');
-    renderCursos(); renderKeywords();
+    renderCursos();
+    renderKeywords();
     toast('Curso eliminado','success');
-  } catch(e) { toast('Error','error'); }
+  }catch(e){ toast('Error: '+e.message,'error'); }
 }
- 
-function renderConvList() {
+
+// ── CONVERSACIONES ────────────────────────────────
+function renderConvList(){
   const list = document.getElementById('conv-list');
   const entries = Object.entries(conversaciones);
-  if(!entries.length){ list.innerHTML=`<div style="padding:20px;color:var(--muted);font-size:.85rem;text-align:center">Sin conversaciones aún</div>`; return; }
-  list.innerHTML = entries.map(([num,msgs])=>{
+  if(!entries.length){
+    list.innerHTML=`<div style="padding:20px;color:var(--muted);font-size:.85rem;text-align:center">Sin conversaciones aún</div>`;
+    return;
+  }
+  list.innerHTML = entries.map(([num, msgs])=>{
     const last = msgs[msgs.length-1];
-    return `<div class="conv-item ${activeConv===num?'active':''}" onclick="openConv('${num}')">
-      <div class="conv-number">📱 ${num}</div>
-      <div class="conv-preview">${last?last.texto.substring(0,40):'...'}</div>
-    </div>`;
+    return `
+      <div class="conv-item ${activeConv===num?'active':''}" onclick="openConv('${num}')">
+        <div class="conv-number">📱 ${num}</div>
+        <div class="conv-preview">${last?last.texto.substring(0,40):'...'}</div>
+      </div>`;
   }).join('');
 }
- 
-function openConv(num) {
+
+function openConv(num){
   activeConv = num;
   renderConvList();
   const msgs = conversaciones[num]||[];
@@ -447,30 +443,35 @@ function openConv(num) {
     </div>`;
   setTimeout(()=>{ const el=document.getElementById('conv-msgs'); if(el) el.scrollTop=el.scrollHeight; },50);
 }
- 
-async function sendManual(num) {
+
+async function sendManual(num){
   const input = document.getElementById('conv-input');
   const texto = input?.value?.trim();
   if(!texto) return;
   input.value='';
-  try {
-    await api('/api/enviar','POST',{to:num,texto});
+  try{
+    await api('/api/enviar','POST',{to:num, texto});
     if(!conversaciones[num]) conversaciones[num]=[];
     conversaciones[num].push({dir:'sent',texto,ts:new Date().toISOString()});
     openConv(num);
-    toast('Enviado ✓','success');
-  } catch(e) { toast('Error','error'); }
+    toast('Mensaje enviado ✓','success');
+  }catch(e){ toast('Error: '+e.message,'error'); }
 }
- 
+
+// ── UTILS ─────────────────────────────────────────
 function closeModal(){ document.getElementById('curso-modal').classList.remove('open'); }
 function toast(msg,type=''){
   const t=document.getElementById('toast');
   t.textContent=msg; t.className='toast show '+type;
   setTimeout(()=>t.classList.remove('show'),3000);
 }
-function copyEl(id){ const el=document.getElementById(id); if(el){ navigator.clipboard.writeText(el.textContent); toast('Copiado ✓','success'); } }
-function copyText(text){ navigator.clipboard.writeText(text); toast('Copiado ✓','success'); }
+function copyText(id){
+  const el=document.getElementById(id);
+  if(el){ navigator.clipboard.writeText(el.textContent); toast('Copiado ✓','success'); }
+}
+function copyText2(text){ navigator.clipboard.writeText(text); toast('Copiado ✓','success'); }
 </script>
 </body>
 </html>
+
 
