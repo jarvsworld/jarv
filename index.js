@@ -12,7 +12,7 @@ app.use((req, res, next) => {
 });
  
 const WA_TOKEN     = process.env.WA_TOKEN     || 'EAANorwrMgogBRCbOggwCPVtdo40MUZAtIeixevvPYJMP1cuqR9aM1FPTxij9zKheYf7qrIC0yCwOjJqwwinZCp2EIkBWbQ0xwlbL3fVHzB3EIGW1qBq2adQDZAn6sPULiXi1JyJtXxTQU2wfif8nhjh7tSfZCKyjQdemdCzZAbCWbaEfidtJYJfZABOYD4yJeEDzU7ZBPZAgZBU8gicwhj1Ip0PianyFXkxYsCtksQoSG';
-const WA_PHONE_ID  = process.env.WA_PHONE_ID  || '1087781197744698';
+const WA_PHONE_ID  = process.env.WA_PHONE_ID  || '1035430116325207';
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN || 'jarv_verify_2024';
  
 let cursos = {};
@@ -182,3 +182,4 @@ app.get('/', (req, res) => res.json({ status: 'JARV corriendo ✓', cursos: Obje
  
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🤖 JARV corriendo en puerto ${PORT}`));
+ 
