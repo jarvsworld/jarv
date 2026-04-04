@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 app.use(express.json());
-
+ 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
@@ -10,7 +10,7 @@ app.use((req, res, next) => {
   if (req.method === 'OPTIONS') return res.sendStatus(200);
   next();
 });
-
+ 
 // ── CONFIGURACIÓN — solo variables de entorno ─────
 const WA_TOKEN     = process.env.WA_TOKEN;
 const WA_PHONE_ID  = process.env.WA_PHONE_ID;
@@ -19,20 +19,20 @@ const AT_TOKEN     = process.env.AT_TOKEN;
 const AT_BASE      = process.env.AT_BASE;
 const AT_URL       = `https://api.airtable.com/v0/${AT_BASE}`;
 const AT_HDR       = { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' };
-
+ 
 // Verificar variables al arrancar
 const REQUIRED = { WA_TOKEN, WA_PHONE_ID, AT_TOKEN, AT_BASE };
 for (const [k, v] of Object.entries(REQUIRED)) {
   if (!v) console.warn(`⚠️  Variable de entorno faltante: ${k}`);
 }
-
+ 
 // ── CACHÉ DE CURSOS ───────────────────────────────
 let cursosCache = {};
 let ultimaActualizacion = null;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutos
-
+ 
 let conversaciones = {};
-
+ 
 // ── AIRTABLE ──────────────────────────────────────
 async function cargarCursosDeAirtable() {
   try {
@@ -66,14 +66,14 @@ async function cargarCursosDeAirtable() {
     return cursosCache;
   }
 }
-
+ 
 async function getCursos() {
   if (!ultimaActualizacion || Date.now() - ultimaActualizacion > CACHE_TTL) {
     await cargarCursosDeAirtable();
   }
   return cursosCache;
 }
-
+ 
 async function crearCursoAirtable(data) {
   const res = await axios.post(`${AT_URL}/Cursos`, {
     fields: {
@@ -91,7 +91,7 @@ async function crearCursoAirtable(data) {
   ultimaActualizacion = null;
   return res.data;
 }
-
+ 
 async function actualizarCursoAirtable(id, data) {
   const res = await axios.patch(`${AT_URL}/Cursos/${id}`, {
     fields: {
@@ -109,12 +109,12 @@ async function actualizarCursoAirtable(id, data) {
   ultimaActualizacion = null;
   return res.data;
 }
-
+ 
 async function eliminarCursoAirtable(id) {
   await axios.delete(`${AT_URL}/Cursos/${id}`, { headers: AT_HDR });
   ultimaActualizacion = null;
 }
-
+ 
 // ── WHATSAPP ──────────────────────────────────────
 async function enviarTexto(to, texto) {
   try {
@@ -129,7 +129,7 @@ async function enviarTexto(to, texto) {
     await enviarPlantillaBienvenida(to);
   }
 }
-
+ 
 async function enviarPDF(to, pdfUrl, nombreArchivo, caption) {
   try {
     await axios.post(
@@ -148,7 +148,7 @@ async function enviarPDF(to, pdfUrl, nombreArchivo, caption) {
     console.error('Error PDF:', e.response?.data || e.message);
   }
 }
-
+ 
 async function enviarPlantillaBienvenida(to) {
   try {
     await axios.post(
@@ -161,14 +161,14 @@ async function enviarPlantillaBienvenida(to) {
     console.error('Error plantilla:', e.response?.data || e.message);
   }
 }
-
+ 
 // ── FORMATEAR FECHAS ──────────────────────────────
 function formatFecha(f) {
   if (!f) return null;
   const d = new Date(f + 'T12:00:00');
   return d.toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 }
-
+ 
 function generarInfoFechas(curso) {
   const modalidad = curso.modalidad || '1dia_6h';
   const f1 = formatFecha(curso.fecha1);
@@ -186,7 +186,7 @@ function generarInfoFechas(curso) {
   }
   return { fechaTexto, horarioTexto };
 }
-
+ 
 // ── GENERAR MENSAJES ──────────────────────────────
 function generarRespuestaCurso(curso) {
   const { fechaTexto, horarioTexto } = generarInfoFechas(curso);
@@ -206,7 +206,7 @@ function generarRespuestaCurso(curso) {
     `¿Te gustaría inscribirte? Responde *SÍ* y un asesor te contactará en breve. 😊`
   ].filter(l => l !== null && l !== undefined).join('\n');
 }
-
+ 
 function generarCatalogo(cursos) {
   const entradas = Object.entries(cursos);
   if (!entradas.length) return '📚 Aún no tenemos cursos disponibles. ¡Pronto tendremos novedades!';
@@ -217,12 +217,12 @@ function generarCatalogo(cursos) {
   }).join('\n\n');
   return `📚 *Catálogo de Cursos Disponibles*\n\n${lista}\n\n👉 Escribe el código del curso (ej. *CURSO-A*) para ver detalles y recibir el PDF informativo.`;
 }
-
+ 
 // ── PROCESAR MENSAJE ──────────────────────────────
 async function procesarMensaje(from, texto) {
   const msg = texto.trim().toUpperCase();
   const cursos = await getCursos();
-
+ 
   if (cursos[msg]) {
     const curso = cursos[msg];
     await enviarTexto(from, generarRespuestaCurso(curso));
@@ -240,14 +240,14 @@ async function procesarMensaje(from, texto) {
   }
   await enviarTexto(from, `Hola 👋 Escribe *CURSOS* para ver el catálogo, o el código del curso que te interesa (ej. *CURSO-A*).`);
 }
-
+ 
 // ── WEBHOOK ───────────────────────────────────────
 app.get('/webhook', (req, res) => {
   const mode = req.query['hub.mode'], token = req.query['hub.verify_token'], challenge = req.query['hub.challenge'];
   if (mode === 'subscribe' && token === VERIFY_TOKEN) { res.status(200).send(challenge); }
   else res.sendStatus(403);
 });
-
+ 
 app.post('/webhook', async (req, res) => {
   res.sendStatus(200);
   const body = req.body;
@@ -268,13 +268,13 @@ app.post('/webhook', async (req, res) => {
     }
   }
 });
-
+ 
 // ── API ───────────────────────────────────────────
 app.get('/api/cursos', async (req, res) => {
   const cursos = await getCursos();
   res.json(cursos);
 });
-
+ 
 app.post('/api/cursos', async (req, res) => {
   try {
     const { clave, nombre } = req.body;
@@ -286,7 +286,7 @@ app.post('/api/cursos', async (req, res) => {
     res.json({ ok: true, cursos });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
-
+ 
 app.delete('/api/cursos/:clave', async (req, res) => {
   try {
     const clave = req.params.clave.toUpperCase();
@@ -297,9 +297,9 @@ app.delete('/api/cursos/:clave', async (req, res) => {
     res.json({ ok: true });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
-
+ 
 app.get('/api/conversaciones', (req, res) => res.json(conversaciones));
-
+ 
 app.post('/api/enviar', async (req, res) => {
   const { to, texto } = req.body;
   if (!to || !texto) return res.status(400).json({ error: 'to y texto requeridos' });
@@ -308,15 +308,15 @@ app.post('/api/enviar', async (req, res) => {
   conversaciones[to].push({ dir: 'sent', texto, ts: new Date().toISOString() });
   res.json({ ok: true });
 });
-
+ 
 // Forzar recarga de Airtable
 app.get('/api/reload', async (req, res) => {
   await cargarCursosDeAirtable();
   res.json({ ok: true, cursos: Object.keys(cursosCache).length });
 });
-
+ 
 app.get('/', (req, res) => res.json({ status: 'JARV ✓', cursos: Object.keys(cursosCache).length }));
-
+ 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
   console.log(`🤖 JARV en puerto ${PORT}`);
